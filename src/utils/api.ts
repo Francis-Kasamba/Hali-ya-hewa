@@ -151,6 +151,7 @@ export async function getWeatherByCoords(
     days,
     lang,
     units: 'metric',
+    ai: 'false',
   })
 
   return mapWeatherResponse(response)

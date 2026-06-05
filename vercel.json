@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://api.weather-ai.co/:path*"
+    },
+    {
+      "source": "/nominatim/:path*",
+      "destination": "https://nominatim.openstreetmap.org/:path*"
+    }
+  ]
+}

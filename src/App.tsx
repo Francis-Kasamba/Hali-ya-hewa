@@ -93,7 +93,7 @@ function App() {
                   lang={lang}
                   onToggleLang={toggleLang}
                 />
-                <ForecastStrip daily={weather.daily} />
+                <ForecastStrip daily={weather.daily} lang={lang} />
               </div>
             ) : null
           )}

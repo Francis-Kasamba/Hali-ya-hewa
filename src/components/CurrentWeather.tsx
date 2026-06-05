@@ -1,4 +1,5 @@
 import type { WeatherResponse } from '../types/weather'
+import { translateCondition } from '../utils/i18n'
 import { WeatherIcon } from './WeatherIcon'
 
 type CurrentWeatherProps = {
@@ -47,7 +48,7 @@ export function CurrentWeather({
           <div className="text-7xl font-bold tracking-tight text-white sm:text-8xl">
             {Math.round(weather.current.temp_c)}°C
           </div>
-          <p className="text-lg text-gray-300">{weather.current.condition}</p>
+          <p className="text-lg text-gray-300">{translateCondition(weather.current.condition, lang)}</p>
 
           <div className="flex flex-wrap justify-center gap-3 pt-2">
             <StatPill>💧 {weather.current.humidity}%</StatPill>

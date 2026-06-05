@@ -1,16 +1,18 @@
 import { format, parseISO, isSameDay } from 'date-fns'
 import type { ForecastDay } from '../types/weather'
+import { translateCondition } from '../utils/i18n'
 import { WeatherIcon } from './WeatherIcon'
 
 type ForecastStripProps = {
   daily: ForecastDay[]
+  lang: 'en' | 'sw'
 }
 
-export function ForecastStrip({ daily }: ForecastStripProps) {
+export function ForecastStrip({ daily, lang }: ForecastStripProps) {
   return (
     <section className="mt-8 w-full text-left">
       <p className="text-xs font-semibold uppercase tracking-widest text-emerald-300">
-        7-Day Forecast
+        {lang === 'sw' ? 'Utabiri wa Siku 7' : '7-Day Forecast'}
       </p>
 
       <div className="scrollbar-hide mt-4 flex gap-3 overflow-x-auto pb-2">
@@ -28,12 +30,15 @@ export function ForecastStrip({ daily }: ForecastStripProps) {
               }`}
             >
               <p className="text-sm font-medium text-white">
-                {isToday ? 'Today' : format(date, 'EEE')}
+                {isToday ? (lang === 'sw' ? 'Leo' : 'Today') : format(date, 'EEE')}
               </p>
 
               <div className="my-3 flex justify-center">
                 <WeatherIcon condition={day.condition} size="sm" />
               </div>
+              <p className="text-xs text-gray-400">
+                {translateCondition(day.condition, lang)}
+              </p>
 
               <p className="text-lg font-bold text-white">{Math.round(day.max_temp_c)}°</p>
               <p className="text-sm text-gray-400">{Math.round(day.min_temp_c)}°</p>

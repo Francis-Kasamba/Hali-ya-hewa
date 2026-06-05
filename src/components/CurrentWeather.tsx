@@ -29,7 +29,7 @@ export function CurrentWeather({
         <div>
           <h2 className="text-3xl font-bold text-white sm:text-4xl">{city}</h2>
           <p className="mt-1 text-sm text-gray-400">
-            {weather.location.region} · {weather.location.country}
+            {weather.location.country}
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export function CurrentWeather({
           <div className="flex flex-wrap justify-center gap-3 pt-2">
             <StatPill>💧 {weather.current.humidity}%</StatPill>
             <StatPill>💨 {weather.current.wind_kph} km/h</StatPill>
-            <StatPill>🌡️ Feels {Math.round(weather.current.feels_like_c)}°C</StatPill>
+            <StatPill>🌡️ {lang === 'sw' ? 'Hisi' : 'Feels'} {Math.round(weather.current.feels_like_c)}°C</StatPill>
             <StatPill>☀️ UV {weather.current.uv_index}</StatPill>
           </div>
         </div>
